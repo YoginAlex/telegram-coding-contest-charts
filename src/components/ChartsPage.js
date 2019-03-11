@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ChartsContext } from './Contexts';
-import Canvas from './ChartCanvas/ChartCanvas';
+import Charts from './Charts/Charts';
 
 const ChartsPage = () => {
   const context = useContext(ChartsContext);
@@ -12,7 +12,7 @@ const ChartsPage = () => {
     <div className="App">
       {chartsLoading && <div>Loading ...</div>}
 
-      {!chartsLoading && <Canvas />}
+      {!chartsLoading && <Charts />}
     </div>
   );
 };
