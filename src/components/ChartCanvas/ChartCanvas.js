@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import { graphDataPropType } from '../propTypes';
 import useWindowSize from '../../hooks/useWindowSize';
 import useAnimationFrame from '../../hooks/useAnimationFrame';
@@ -6,7 +7,7 @@ import { GRAPH_TYPES } from '../enums';
 
 import './ChartCanvas.scss';
 
-const ChartCanvas = ({ chart }) => {
+const ChartCanvas = ({ chart, height }) => {
   const canvasRef = useRef(null);
   const windowSize = useWindowSize();
   const { columns, types, colors } = chart;
@@ -24,18 +25,18 @@ const ChartCanvas = ({ chart }) => {
         null,
         lines.map(line => Math.max.apply(null, line.slice(1))),
       );
-      const yRatio = 300 / maxOfPoints;
+      const yRatio = height / maxOfPoints;
 
       lines.forEach((line) => {
         const key = line[0];
 
         ctx.beginPath();
         ctx.strokeStyle = colors[key];
-        ctx.moveTo(0, 300 - line[1] * yRatio);
+        ctx.moveTo(0, height - line[1] * yRatio);
 
         const lineLength = line.length;
         for (let i = 2; i < lineLength; i += 1) {
-          ctx.lineTo(xStep * i, 300 - line[i] * yRatio);
+          ctx.lineTo(xStep * i, height - line[i] * yRatio);
         }
 
         ctx.stroke();
@@ -49,7 +50,7 @@ const ChartCanvas = ({ chart }) => {
     <canvas
       ref={canvasRef}
       className="Canvas"
-      height={300}
+      height={height}
       width={windowSize.width}
     />
   );
@@ -57,6 +58,11 @@ const ChartCanvas = ({ chart }) => {
 
 ChartCanvas.propTypes = {
   chart: graphDataPropType.isRequired,
+  height: PropTypes.number,
+};
+
+ChartCanvas.defaultProps = {
+  height: 300,
 };
 
 export default ChartCanvas;
