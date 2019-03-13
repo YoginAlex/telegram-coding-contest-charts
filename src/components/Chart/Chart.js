@@ -39,10 +39,13 @@ const Chart = ({ chart }) => {
         height={HEIGHT}
       />
       <InputRange
+        draggableTrack
         maxValue={axis.length - 1}
         minValue={0}
         value={range}
-        onChange={value => setRange(value)}
+        onChange={(value) => {
+          setRange(value);
+        }}
       />
     </div>
   );

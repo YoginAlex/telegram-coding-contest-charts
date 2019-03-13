@@ -11,8 +11,6 @@ const ChartCanvas = ({ lines, colors, height }) => {
   const canvasRef = useRef(null);
   const windowSize = useWindowSize();
 
-  const { length } = lines[0].points;
-
   const draw = () => {
     if (canvasRef.current && canvasRef.current.getContext) {
       const ctx = canvasRef.current.getContext('2d');
@@ -46,7 +44,7 @@ const ChartCanvas = ({ lines, colors, height }) => {
     }
   };
 
-  useAnimationFrame(draw, length);
+  useAnimationFrame(draw, lines);
 
   return (
     <canvas

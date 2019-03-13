@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect } from 'react';
 
-const useAnimationFrame = (callback, length) => {
+const useAnimationFrame = (callback, lines) => {
   // const callbackRef = useRef(callback);
   const frameRef = useRef();
 
@@ -15,7 +15,7 @@ const useAnimationFrame = (callback, length) => {
     frameRef.current = window.requestAnimationFrame(loop);
 
     return () => window.cancelAnimationFrame(frameRef.current);
-  }, [length]);
+  }, [lines]);
 };
 
 export default useAnimationFrame;
