@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/telegram-coding-contest-charts/precache-manifest.b66c798e7c35055c09fe93936c646a01.js"
+  "/telegram-coding-contest-charts/precache-manifest.acd2f3093565252034822974dc331ab1.js"
 );
 
 workbox.clientsClaim();
