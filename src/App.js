@@ -10,7 +10,9 @@ const App = () => {
   const fetchData = async () => {
     setState({ ...state, loading: true });
 
-    const response = await fetch('/chart_data.json');
+    const response = await fetch(
+      '/telegram-coding-contest-charts/chart_data.json',
+    );
     const chartData = await response.json();
 
     setState({
